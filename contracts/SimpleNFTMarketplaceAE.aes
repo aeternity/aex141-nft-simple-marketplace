@@ -29,7 +29,7 @@ contract SimpleNFTMarketplaceAE =
           sale_counter = 1 }
 
     stateful entrypoint announce_sale(nft_contract: IAEX141, token_id: int, price: int) : int =
-        nft_contract.claim_from_contract(token_id)
+        nft_contract.transfer_to_contract(token_id)
         let sale_id = state.sale_counter
         put(state{ saleid_to_contract[state.sale_counter] = nft_contract
             , saleid_to_sale[state.sale_counter] =
